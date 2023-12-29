@@ -1,0 +1,83 @@
+/* src/styles/SignUp.module.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(../../public/images/Sign_in.png);
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.signUpBox {
+  width: 300px;
+  padding: 20px;
+}
+
+.signUpText {
+  color: #fff;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 80px;
+  margin-bottom: 30px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.labelWrapper label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.inputField input {
+  width: 100%;
+  padding: 11px 16px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #224957;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.inputField input::placeholder {
+  color: #fff;
+}
+
+.signUpButton {
+  width: 100%;
+  padding: 15px;
+  background-color: #2bd17e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-top: 10px;
+}
+.signInLink {
+  text-align: center;
+  color: #fff;
+  font-family: "Montserrat";
+  font-size: 16px;
+}
+.signInLink a {
+  color: #2bd17e;
+  font-weight: 600;
+  text-decoration: none;
+}

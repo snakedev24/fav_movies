@@ -1,0 +1,43 @@
+/* Pagination Component CSS */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding-bottom: 70px;
+}
+
+.paginationButton {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.pageInfo {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+.currentPage {
+  border-radius: 4px;
+  background: #2bd17e;
+  padding: 4px 12px;
+  font-size: 16px;
+  color: #fff;
+}
+.totalPages {
+  font-size: 16px;
+  border-radius: 4px;
+  background: #092c39;
+  color: #fff;
+  padding: 4px 12px;
+}
