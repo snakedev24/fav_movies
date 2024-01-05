@@ -15,6 +15,7 @@ const EditMovieCard: React.FC = () => {
     year: "",
   });
   const [file, setFile] = useState<File | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -85,10 +86,38 @@ const EditMovieCard: React.FC = () => {
     }
   }, [id]);
 
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const droppedFile = e.dataTransfer.files && e.dataTransfer.files[0];
+    setFile(droppedFile);
+  };
+
   return (
     <div className={styles.editCard}>
       <h2>Edit</h2>
-      <div className={styles.editCardInner}>
+      <div 
+        className={`${styles.editCardInner} ${isDragging ? styles.dragging : ''}`}
+        onDragOver={handleDragOver}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
         <div className={styles.chooseImage}>
           <label>
             <Image
@@ -100,6 +129,15 @@ const EditMovieCard: React.FC = () => {
             />
             <input type="file" accept="image/*" onChange={handleFileChange} />
           </label>
+          <div  className={styles.selectedImage}>
+            {file && (
+            <img
+              src={URL.createObjectURL(file)}
+              alt="Dropped Image"
+              className={styles.uploadedImage}
+            />
+        )}
+          </div>
         </div>
         <div className={styles.details}>
           <input

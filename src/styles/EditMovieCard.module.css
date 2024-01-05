@@ -21,9 +21,12 @@
   justify-content: space-between;
   grid-template-columns: 2fr 2fr;
 }
+.chooseImage{
+  position: relative;
+}
 .chooseImage img {
-  width: 423px;
-  height: 440px;
+  width: 460px!important;
+  height: 480px!important;
   margin-bottom: 0;
 }
 .chooseImage input {
@@ -46,6 +49,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.selectedImage{
+  position: absolute;
+  top: 7px;
+    left: 10px;
+}
+.selectedImage img{
+  max-width: 460px;
+  height: 480px;
+  border-radius: 10px;
 }
 .chooseImage label svg {
   display: block;
@@ -106,4 +119,8 @@ input.movieTitle {
 button.cancelButton {
   background-color: transparent;
   border: 1px solid #fff;
+}
+
+.dragging {
+  background-color: #f2f2f2;
 }

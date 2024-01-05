@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from "../styles/CreateMovie.module.css"
 import { showErrorToast, showSuccessToast } from '@/utils/toastMessage';
 import { createMovie } from '@/service/apiService';
+import { useRouter } from 'next/router';
 
 const CreateMovie: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,9 @@ const CreateMovie: React.FC = () => {
     year: '',
     image: null as File | null,
   });
+  const [isDragging, setIsDragging] = useState(false);
+
+  const router = useRouter()
 
   const handleInputChange = (e: any, field: any) => {
     setFormData({ ...formData, [field]: e.target.value });
@@ -33,6 +37,7 @@ const CreateMovie: React.FC = () => {
 
       if (isSuccess) {
         showSuccessToast('Movie created successfully');
+        router.push("/")
         setFormData({ title: '', year: '', image: null });
       }
     } catch (error) {
@@ -40,10 +45,38 @@ const CreateMovie: React.FC = () => {
     }
   };
 
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const droppedFile = e.dataTransfer.files && e.dataTransfer.files[0];
+    setFormData({ ...formData, image: droppedFile });
+  };
+
   return (
     <div className={styles.createMovieContainer}>
       <h2>Create a new movie </h2>
-      <div className={styles.createMovieInner}>
+      <div 
+        className={`${styles.createMovieInner} ${isDragging ? styles.dragging : ''}`}
+        onDragOver={handleDragOver}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
       <div className={styles.chooseImage}>
       <label>
         <span>
@@ -59,7 +92,17 @@ const CreateMovie: React.FC = () => {
         </svg>Drop an image here</span>
           <input type="file" onChange={handleImageChange} />
         </label>
+        <div className={styles.selectedImage}>
+        {formData.image && (
+          <img
+            src={URL.createObjectURL(formData.image)}
+            alt="Uploaded Image"
+            className={styles.uploadedImage}
+          />
+        )}
         </div>
+        </div>
+       
       <div className={styles.createMovieRight}>
       <form onSubmit={handleSubmit} className={styles.createMovieForm}>
         <label>
