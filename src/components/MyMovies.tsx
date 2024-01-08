@@ -111,6 +111,7 @@ const MyMovies = () => {
         </div>
       </div>
       <div className={styles.MovieList}>
+        {!myMovieList?.movies?.length && "No Movies Found"}
         {myMovieList?.movies?.map((movie: any) => (
           <MovieCard
             key={movie._id}

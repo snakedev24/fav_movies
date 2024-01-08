@@ -34,9 +34,10 @@ const MovieCard: React.FC<MovieCardProps> = ({
             <EditMovieSvg />
           </Link> */}
           <Link href={`/edit_movie_card/${movieId}`} passHref>
-            <a>
-              <EditMovieSvg />
-            </a>
+            {/* <a>
+              
+            </a> */}
+            <EditMovieSvg />
           </Link>
         </div>
       </div>

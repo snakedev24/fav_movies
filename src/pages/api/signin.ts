@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 async function findUserByEmail(email: string) {
-  const mongoURI = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/';
+  const mongoURI = process.env.MONGODB_URI ?? 'mongodb+srv://pankaj:1322panku@cluster0.h4npmjo.mongodb.net/';
   const mongoCollection = 'users';
 
   const client = new MongoClient(mongoURI);

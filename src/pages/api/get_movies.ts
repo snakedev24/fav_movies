@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { MongoClient, ObjectId } from 'mongodb';
 
 export async function getMovies(movieId = null) {
-    const mongoURI = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/';
+    const mongoURI = process.env.MONGODB_URI ?? 'mongodb+srv://pankaj:1322panku@cluster0.h4npmjo.mongodb.net/';
     const mongoCollection = 'movies';
     const mongoDatabase = process.env.MONGODB_DB;
   
